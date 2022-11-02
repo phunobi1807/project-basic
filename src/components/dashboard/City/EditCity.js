@@ -25,7 +25,6 @@ const EditCity = () => {
     );
     setName(response.data.data.name);
     setPublish(response.data.data.publish);
-    console.log(name, publish);
     // console.log(response.data.data.name);
   };
   useEffect(() => {

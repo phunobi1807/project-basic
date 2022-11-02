@@ -1,8 +1,15 @@
 import { Navigate, Outlet } from "react-router-dom";
 
 const useAuth = () => {
-  const user = { token: true };
-  return user && user.token;
+  const userToken = JSON.parse(localStorage.getItem("user"));
+  if (userToken) {
+    const user = { token: true };
+    return user && user.token;
+  } else {
+    const user = { token: false };
+    return user && user.token;
+  }
+
 };
 
 const ProtectedRoutes = () => {

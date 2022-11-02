@@ -2,13 +2,16 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { authHeader } from '../../services/auth-header';
 
 const Dashboard = () => {
   const [dataCity, setDataCity] = useState([]);
 
   const getDataCity = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/city/getall");
+      const res = await axios.get("http://localhost:3000/api/city/getall", {
+        headers: authHeader()
+      });
       setDataCity(res.data.data);
       // console.log(res.data.data);
     } catch (error) {

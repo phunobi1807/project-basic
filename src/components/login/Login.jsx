@@ -9,23 +9,26 @@ const Login = () => {
   const [msg, setMsg] = useState("");
   const [token, setToken] = useState("");
   const navigate = useNavigate();
-  const LoginUser = useCallback(async (e) => {
-  const   data = {
-      email: email,
-      password: password,
-    };
+  const LoginUser = async (e) => {
     e.preventDefault();
     try {
       await axios
-        .post("http://localhost:3000/api/auth/login", data)
+        .post("http://localhost:3000/api/auth/login", {
+          email: email,
+          password: password,
+        })
         .then((response) => {
-          setToken(response.data.token);
+          if(response.data.token) {
+            localStorage.setItem("user", JSON.stringify(response.data));
+          }
+          console.log(response.data);
+          return response.data;
         });
       navigate("/dashboard");
     } catch (error) {
       setMsg(error.response.data.message);
     }
-  }, []);
+  };
   return (
     <>
       <div className="form_login">

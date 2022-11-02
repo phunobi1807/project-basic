@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { authHeader } from '../../../services/auth-header';
 
 
 const AddCity = () => {
@@ -16,7 +17,9 @@ const AddCity = () => {
     }
     const Add = async (e) => {
         e.preventDefault();
-        await axios.post('http://localhost:3000/api/city/create', data);
+        await axios.post('http://localhost:3000/api/city/create', data, {
+          headers: authHeader()
+        });
         navigate("/dashboard");
     }
   return (
