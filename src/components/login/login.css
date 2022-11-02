@@ -1,0 +1,10 @@
+.form_login {
+}
+.form_login form {
+
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+    gap: 10px;
+}
