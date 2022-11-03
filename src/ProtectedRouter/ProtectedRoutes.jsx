@@ -9,7 +9,6 @@ const useAuth = () => {
     const user = { token: false };
     return user && user.token;
   }
-
 };
 
 const ProtectedRoutes = () => {

@@ -12,6 +12,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import EditCity from "./components/dashboard/City/EditCity";
 import AddCity from "./components/dashboard/City/AddCity";
 import ProtectedRoutes from "./ProtectedRouter/ProtectedRoutes";
+import { Counter } from "./components/login/Counter";
 
 // const routers = [
 //   {

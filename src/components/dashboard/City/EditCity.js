@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { authHeader } from "../../../services/auth-header";
+import cityApi from "../../../api/cityApi";
 
 const EditCity = () => {
   const [name, setName] = useState("");
@@ -15,17 +17,14 @@ const EditCity = () => {
   const updateCity = async (e) => {
     e.preventDefault();
     // await axios.put(`http://localhost:3000/api/city/update-publish/${id}`, data);
-    await axios.put(`http://localhost:3000/api/city/update/${id}`, data);
+    await cityApi.update(id, data)
     navigate("/dashboard");
   };
 
   const getCityById = async () => {
-    const response = await axios.get(
-      `http://localhost:3000/api/city/getbyid/${id}`
-    );
+    const response = await cityApi.get(id)
     setName(response.data.data.name);
     setPublish(response.data.data.publish);
-    // console.log(response.data.data.name);
   };
   useEffect(() => {
     getCityById();
